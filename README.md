@@ -7,6 +7,7 @@ This repository is the code to perform all analysis done in Harun Ardiansyah's D
 - To run transfer functions simulation, use TRANSFER_FUNCTION.py
 - To run unfolding method, use UNFOLDING_{geom_type}.py
   - geom_type is geometry option: 1D, 2D rectangular grid, 2D hexagonal grid, 3D rectangular grid (coming soon), 3D hexagonal grid (coming soon)
+- pip install -e .
 
 ## LIST OF TEST
 
@@ -63,8 +64,10 @@ This repository is the code to perform all analysis done in Harun Ardiansyah's D
 - TEST12: HTTR FAV, 2D 2-group, Noise Center/Non-center, Fuel Assembly Vibration (FAV)
 
 ## NOTE: Required libraries to run the codes
-    conda create --name noise numpy scipy matplotlib shapely h5py petsc4py -c conda-forge
+    conda create --name noise numpy scipy matplotlib shapely h5py petsc4py pip -c conda-forge
     conda install -c conda-forge 'petsc=*=complex*' petsc4py
+To make the importable package, run the following:
+    pip install -e .
 
 ## End Goals
 - End goal for 2D is to simulate vibration case
