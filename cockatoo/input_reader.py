@@ -1,0 +1,30 @@
+# src/xs_utils.py
+import json
+import numpy as np
+
+
+def is_1d_list(v):
+    return isinstance(v, list) and all(not isinstance(i, (list, np.ndarray)) for i in v)
+
+
+def check_xs(data):
+    required = ["D", "TOT", "SIGS", "NUFIS"]
+    for key in required:
+        if key not in data:
+            raise ValueError(f"Missing required variable: {key}")
+        if not isinstance(data[key], list) or len(data[key]) != 1:
+            raise ValueError(f"{key} must be a list of 1 group: [list]")
+        if not is_1d_list(data[key][0]):
+            raise ValueError(f"{key}[0] must be a 1-D list")
+
+
+def save_to_json(data, json_path):
+    """JSON cannot store numpy arrays; convert first."""
+    serializable = {}
+    for key, val in data.items():
+        if isinstance(val, np.ndarray):
+            serializable[key] = val.tolist()
+        else:
+            serializable[key] = val
+    with open(json_path, "w") as f:
+        json.dump(serializable, f, indent=4)
