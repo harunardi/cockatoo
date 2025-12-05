@@ -83,11 +83,13 @@ def to_jsonable(obj):
         return [to_jsonable(v) for v in obj]
     return obj  # fallback
 
-def save_to_json(data, json_path, folder_path, case_name):
-    folder_path = Path(folder_path)
-    folder_path.mkdir(exist_ok=True)
-    json_path = folder_path / Path(case_name).name
-    with open(json_path, "w") as f:
+def save_to_json(data, json_path, parent_folder, case_name):
+    parent_folder = Path(parent_folder)
+    case_folder = parent_folder / case_name
+    case_folder.mkdir(exist_ok=True)
+    json_filename = Path(json_path).name
+    final_json_path = case_folder / json_filename
+    with open(final_json_path, "w") as f:
         json.dump(to_jsonable(data), f, indent=4)
 
 def run():
@@ -127,11 +129,11 @@ def run():
     # -----------------------------
     case_name = variables.get("case_name")
     json_file = Path(module.__file__).with_suffix(".json")
-    folder_path = Path(module.__file__)
-    print(folder_path)
-#    save_to_json(variables, json_file, folder_path)
-#    print(f"[RUNNER] Saved JSON → {json_file}")
+    current_folder = Path(module.__file__).parent
 
+    save_to_json(variables, json_file, current_folder, case_name)
+
+    print(f"[RUNNER] Saved JSON → {json_file}")
 
     # Now you can continue running your simulation
     return variables
