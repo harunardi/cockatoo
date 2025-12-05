@@ -8,6 +8,10 @@ from cockatoo.input_reader import check_xs, save_to_json
 import json
 import numpy as np
 
+# Prevent .pyc file generation
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+sys.dont_write_bytecode = True
+
 #def run():
 #    """
 #    Main driver function.
@@ -79,8 +83,11 @@ def to_jsonable(obj):
         return [to_jsonable(v) for v in obj]
     return obj  # fallback
 
-def save_to_json(data, path):
-    with open(path, "w") as f:
+def save_to_json(data, json_path, folder_path, case_name):
+    folder_path = Path(folder_path)
+    folder_path.mkdir(exist_ok=True)
+    json_path = folder_path / Path(case_name).name
+    with open(json_path, "w") as f:
         json.dump(to_jsonable(data), f, indent=4)
 
 def run():
@@ -118,9 +125,12 @@ def run():
     # -----------------------------
     # 4. Save JSON
     # -----------------------------
+    case_name = variables.get("case_name")
     json_file = Path(module.__file__).with_suffix(".json")
-    save_to_json(variables, json_file)
-    print(f"[RUNNER] Saved JSON → {json_file}")
+    folder_path = Path(module.__file__)
+    print(folder_path)
+#    save_to_json(variables, json_file, folder_path)
+#    print(f"[RUNNER] Saved JSON → {json_file}")
 
 
     # Now you can continue running your simulation

@@ -1,7 +1,12 @@
 # src/xs_utils.py
 import json
 import numpy as np
+import os
+import sys
 
+# Prevent .pyc file generation
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+sys.dont_write_bytecode = True
 
 def is_1d_list(v):
     return isinstance(v, list) and all(not isinstance(i, (list, np.ndarray)) for i in v)
