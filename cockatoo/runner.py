@@ -12,64 +12,6 @@ import numpy as np
 os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 sys.dont_write_bytecode = True
 
-#def run():
-#    """
-#    Main driver function.
-#    Auto-detects the input file that called run() and executes workflow.
-#    """
-#
-#    # -----------------------------
-#    # 1. Detect input file automatically
-#    # -----------------------------
-#    caller_frame = inspect.stack()[1]
-#    input_file = Path(caller_frame.filename)
-#    print(f"[RUNNER] Detected input file: {input_file}")
-#
-#    # -----------------------------
-#    # 3. Dynamically load input file variables
-#    # -----------------------------
-#    spec = importlib.util.spec_from_file_location(input_file.stem, input_file)
-#    module = importlib.util.module_from_spec(spec)
-#    spec.loader.exec_module(module)
-#
-#    ALLOWED_TYPES = (int, float, str, bool, list, dict, tuple)
-#
-#    variables = {
-#        k: v for k, v in vars(module).items()
-#        if not k.startswith("_")
-#        and isinstance(v, ALLOWED_TYPES)
-#    }
-#
-#    print("[RUNNER] Input checks passed.")
-#    # -----------------------------
-#    # 4. Validate cross sections
-#    # -----------------------------
-#    check_xs(variables)
-#    print("[RUNNER] Input checks passed.")
-#
-#    # -----------------------------
-#    # 5. Save JSON
-#    # -----------------------------
-#    json_file = input_file.with_suffix(".json")
-#    save_to_json(variables, json_file)
-#    print(f"[RUNNER] Saved JSON → {json_file}")
-#
-#    # -----------------------------
-#    # 6. Reload JSON
-#    # -----------------------------
-#    with open(json_file, "r") as f:
-#        loaded = json.load(f)
-#    print("[RUNNER] Reloaded JSON.")
-#
-#    # -----------------------------
-#    # 7. Solver placeholder
-#    # -----------------------------
-#    print("[RUNNER] Running solver... (placeholder)")
-#    # solver(loaded)
-#
-#    print("[RUNNER] Done.")
-#    return loaded
-
 def to_jsonable(obj):
     if isinstance(obj, np.ndarray):
         return obj.tolist()
