@@ -45,11 +45,12 @@ D = [D1]
 TOT = [TOT1]
 NUFIS = [NUFIS1]
 SIGS = [SIGS11]
-chi = [chi1]
+CHI = [chi1]
 
 ###############################################################
 # ILU PRE-CONDITIONER
 precond = 0
 geom_type = '1D'
+solve_type = "forward"
 
 cockatoo.run()
