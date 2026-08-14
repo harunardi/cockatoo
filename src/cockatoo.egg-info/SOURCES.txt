@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/cockatoo/__init__.py
+src/cockatoo/case.py
+src/cockatoo/cli.py
+src/cockatoo/problem.py
+src/cockatoo/solver.py
+src/cockatoo.egg-info/PKG-INFO
+src/cockatoo.egg-info/SOURCES.txt
+src/cockatoo.egg-info/dependency_links.txt
+src/cockatoo.egg-info/entry_points.txt
+src/cockatoo.egg-info/requires.txt
+src/cockatoo.egg-info/top_level.txt

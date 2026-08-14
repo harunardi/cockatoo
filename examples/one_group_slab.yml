@@ -1,0 +1,12 @@
+problem:
+  type: eigenvalue
+
+geometry:
+  type: slab
+  width: 100.0
+
+material:
+  name: fuel
+  diffusion_coefficient: 1.2
+  absorption: 0.01
+  nu_fission: 0.012
