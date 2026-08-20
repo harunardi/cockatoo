@@ -1,24 +1,23 @@
-import yaml
+from .material import MaterialCollection
 
-from .problem import Problem
-from .solver import Solver
+_active_case = None
+
 
 class Case:
-    def __init__(self, problem: Problem, solver: Solver):
-        self.problem = problem
-        self.solver = solver
 
-    @classmethod
-    def from_file(cls, file_path: str):
-        with open(file_path, 'r') as f:
-            data = yaml.safe_load(f)
+    def __init__(self):
 
-        problem = Problem.from_dict(data)
-        solver = Solver()
+        global _active_case
 
-        return cls(problem, solver)
+        self.geometry = None
+        self.materials = MaterialCollection()
+        self.mesh = None
+        self.physics = None
+        self.solver = None
 
-    def run(self):
-        # Solve the problem using the solver
-        solution = self.solver.solve(self.problem)
-        return solution
+        _active_case = self
+
+
+def get_active_case():
+
+    return _active_case

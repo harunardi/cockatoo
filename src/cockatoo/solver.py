@@ -1,35 +1,28 @@
-class Solution:
-
-    def __init__(self, keff):
-
-        self.keff = keff
-
-    def summary(self):
-
-        print()
-        print("-" * 60)
-        print("RESULTS")
-        print("-" * 60)
-
-        print(f"keff = {self.keff:.6f}")
-
-        print("-" * 60)
-
+from .result import EigenvalueResult
 
 class Solver:
 
-    def solve(self, problem):
+    def solve(self, case):
+        raise NotImplementedError
 
-        print()
-        print("Initializing calculation...")
-        print(f"Problem type : {problem.problem_type}")
+class PowerIteration(Solver):
 
-        print("Building geometry...")
-        print("Loading materials...")
-        print("Assembling equations...")
-        print("Solving...")
+    def __init__(
+        self,
+        tolerance=1e-8,
+        max_iterations=1000,
+    ):
 
-        # Fake result for now
-        keff = 1.023456
+        self.tolerance = tolerance
+        self.max_iterations = max_iterations
 
-        return Solution(keff)
+    def solve(self, case):
+
+        # Temporary result
+        keff = 1.0
+
+        return EigenvalueResult(
+            keff=keff,
+            iterations=0,
+            converged=False,
+        )
