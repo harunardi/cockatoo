@@ -9,6 +9,7 @@ class Case:
 
         global _active_case
 
+        self.name = "unnamed_case"
         self.geometry = None
         self.materials = MaterialCollection()
         self.mesh = None
@@ -16,7 +17,6 @@ class Case:
         self.solver = None
 
         _active_case = self
-
 
 def get_active_case():
 

@@ -1,0 +1,34 @@
+COCKATOO_INPUT_VERSION = 1
+
+[CASE]
+
+name = test_case
+
+[GEOMETRY]
+
+type = slab
+width = 100.0
+
+[MESH]
+
+type = cartesian
+dimension = 1
+cells = 100
+
+[MATERIAL]
+
+name = fuel
+D = 1.2
+Sigma_a = 0.01
+nuSigma_f = 0.012
+
+[PHYSICS]
+
+type = diffusion
+groups = 1
+
+[SOLVER]
+
+type = power_iteration
+tolerance = 1e-8
+max_iterations = 1000

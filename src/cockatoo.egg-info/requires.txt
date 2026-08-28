@@ -1,2 +1,5 @@
 numpy
-pyyaml
+scipy
+
+[test]
+pytest

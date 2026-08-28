@@ -5,5 +5,7 @@ Summary: Open source multipurpose neutron diffusion tool
 Requires-Python: >3.11
 License-File: LICENSE
 Requires-Dist: numpy
-Requires-Dist: pyyaml
+Requires-Dist: scipy
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
 Dynamic: license-file

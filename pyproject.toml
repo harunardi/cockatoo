@@ -17,3 +17,6 @@ dependencies = [
 test = [
     "pytest",
 ]
+
+[project.scripts]
+cockatoo = "cockatoo.cli:main"

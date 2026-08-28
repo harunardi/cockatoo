@@ -1,9 +1,12 @@
 from .result import EigenvalueResult
 
+
 class Solver:
 
     def solve(self, case):
+
         raise NotImplementedError
+
 
 class PowerIteration(Solver):
 
@@ -17,6 +20,9 @@ class PowerIteration(Solver):
         self.max_iterations = max_iterations
 
     def solve(self, case):
+
+        print()
+        print("Running Power Iteration...")
 
         # Temporary result
         keff = 1.0

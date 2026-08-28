@@ -13,6 +13,7 @@ class EigenvalueResult:
 
     def summary(self):
 
+        print()
         print("=" * 60)
         print("COCKATOO RESULT")
         print("=" * 60)
@@ -20,3 +21,5 @@ class EigenvalueResult:
         print(f"keff       : {self.keff:.8f}")
         print(f"iterations : {self.iterations}")
         print(f"converged  : {self.converged}")
+
+        print("=" * 60)
